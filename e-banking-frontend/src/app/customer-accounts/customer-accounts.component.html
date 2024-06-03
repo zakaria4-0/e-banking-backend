@@ -1,0 +1,26 @@
+<div class="container mt-2">
+  <div class="card">
+    <div class="card-header">List of Accounts</div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>AccountId</th><th>Type</th><th>Balance</th><th>CreatedAt</th><th>Status</th><th>CustomerId</th><th>Over-Draft</th><th>Interest-Rate</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let acc of bankAccounts">
+          <td>{{acc.id}}</td>
+          <td>{{acc.type}}</td>
+          <td>{{acc.balance | number : '1.2-2'}}</td>
+          <td>{{acc.createdAt | date : 'dd-MM-yyyy'}}</td>
+          <td>{{acc.status}}</td>
+          <td>{{acc.customerDTO.id}}</td>
+          <td>{{acc.overDraft}}</td>
+          <td>{{acc.interestRate}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,101 @@
+<div class="container mt-2">
+
+  <ng-container *ngIf="customers && !errorMsg; else failureorloading">
+  <div class="card">
+    <div class="card-header">Customers</div>
+    <div class="card-body">
+      <div *ngIf="searchFormGroup">
+        <form [formGroup]="searchFormGroup" (ngSubmit)="handleSearchCustomer()">
+          <div class="input-group">
+            <label class="input-group-text">Keyword :</label>
+            <input type="text" formControlName="keyword" class="form-control">
+            <button class="btn btn-info">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th>ID</th><th>Name</th><th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let c of customers">
+          <td>{{c.id}}</td>
+          <td>{{c.name}}</td>
+          <td>{{c.email}}</td>
+          <td>
+            <button (click)="handleDeleteCustomer(c)" class="btn btn-danger">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+          <td>
+            <button (click)="handleEditCustomerFormGroup(c)" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+              <i class="bi bi-pen"></i>
+            </button>
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Edit Customer</h5>
+                  </div>
+                  <div class="modal-body">
+                    <form [formGroup]="editCustomerFormGroup">
+                      <div class="mb-3">
+                        <label class="form-label">Name:</label>
+                        <input type="text" formControlName="name" class="form-control">
+                        <span class="text-danger"
+                              *ngIf="editCustomerFormGroup.controls['name'].touched && editCustomerFormGroup.controls['name'].errors && editCustomerFormGroup.controls['name'].errors!['required']">
+                             Name is required
+                        </span>
+                        <span class="text-danger"
+                              *ngIf="editCustomerFormGroup.controls['name'].touched && editCustomerFormGroup.controls['name'].errors && editCustomerFormGroup.controls['name'].errors!['minlength']">
+                             Name should contains at least 4 characters
+                        </span>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Email:</label>
+                        <input type="text" formControlName="email" class="form-control">
+                        <span class="text-danger"
+                              *ngIf="editCustomerFormGroup.controls['email'].touched && editCustomerFormGroup.controls['email'].errors && (editCustomerFormGroup.controls['email'].errors!['required'] || editCustomerFormGroup.controls['email'].errors!['email'])">
+                             Invalid email
+                        </span>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button [disabled]='!editCustomerFormGroup.valid' type="button" class="btn btn-primary" (click)="handleEditCustomer()">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <button (click)="handleCustomerAccounts(c)" class="btn btn-secondary">
+              Accounts
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </ng-container>
+  <ng-template #failureorloading>
+    <ng-container *ngIf="errorMsg; else loading">
+      <div *ngIf="errorMsg" class="text-danger">
+        {{errorMsg}}
+      </div>
+    </ng-container>
+    <ng-template #loading>
+      <div class="spinner-border text-info" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>
+
