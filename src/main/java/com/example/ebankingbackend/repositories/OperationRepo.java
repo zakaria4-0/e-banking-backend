@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface OperationRepo extends JpaRepository<Operation, Long> {
-    Page<Operation> findByBankAccountId(String accountId, Pageable pageable);
+    Page<Operation> findByBankAccountIdOrderByOperationDateDesc(String accountId, Pageable pageable);
 
 }

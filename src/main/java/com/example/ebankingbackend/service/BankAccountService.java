@@ -8,6 +8,7 @@ import com.example.ebankingbackend.exceptions.BalanceNotSufficientException;
 import com.example.ebankingbackend.exceptions.CustomerNotFoundException;
 import com.example.ebankingbackend.util.BankAccountRequest;
 import com.example.ebankingbackend.util.OperationRequest;
+import com.example.ebankingbackend.util.TransferRequest;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public interface BankAccountService {
     BankAccountDTO getBankAccount(String accountId) throws AccountNotFoundException;
     void debit(OperationRequest operationRequest) throws AccountNotFoundException, BalanceNotSufficientException;
     void credit(OperationRequest operationRequest) throws AccountNotFoundException;
-    void transfer(String accountIdSource, String accountIdDestination, Double amount) throws AccountNotFoundException, BalanceNotSufficientException;
+    void transfer(TransferRequest transferRequest) throws AccountNotFoundException, BalanceNotSufficientException;
 
     List<BankAccountDTO> listBankAccounts();
 
@@ -32,4 +33,7 @@ public interface BankAccountService {
 
     void deleteAccount(String id);
     AccountHistoryDTO getOperationsByAccountId(String accountId, int page, int size) throws AccountNotFoundException;
+
+    List<CustomerDTO> searchCustomers(String keyword);
+    List<BankAccountDTO> getAccountsByCustomerId(Long customerId);
 }
