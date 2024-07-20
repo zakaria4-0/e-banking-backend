@@ -1,0 +1,106 @@
+GET http://localhost:8085/admin/customers
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcxNzQ1MDE0MCwiaWF0IjoxNzE3NDQ5NTQwLCJzY29wZSI6IlJPTEVfQURNSU4gUk9MRV9VU0VSIn0.EH_BdZbik9mjiQ3UAs5MJ0ENT_NBM-anG6ltE_DTxGS5h2ceDRN5jL-TX2bt0_2_Uw6j2fJNWvTN0w8PVlfHIg
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+GET http://localhost:8085/admin/customers
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTcxNzQ0OTc3OSwiaWF0IjoxNzE3NDQ5MTc5LCJzY29wZSI6IlJPTEVfVVNFUiJ9.CapJj_n7S-zuE4y_4YbQNuv3JpCatytWr8i-l91XtdCL2FwxiKe5fKp2YAY4h0scKqcBP2bnfQc5TrH_gzvjCQ
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+GET http://localhost:8085/admin/customers
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTcxNjkzNTIwNywiaWF0IjoxNzE2OTM0NjA3LCJzY29wZSI6IlJPTEVfVVNFUiJ9.rpzfYkqa2dPF4wcdOak-E0tWzuVdIIYz7guBVHH5-0-6fuyEXz3un5EMDEO5h7KnhWbzqxB4bSaMZvGOgqonvg
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+GET http://localhost:8085/admin/customers
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTcxNjkzNDg1NywiaWF0IjoxNzE2OTM0MjU3LCJzY29wZSI6IlJPTEVfVVNFUiJ9.FYcn6mgTjDeczVP57yIkk_y8TyzPGsYFWi8asxItiGr_0JIZuhyDAKgnWo_dl1aG0OS8EwtPGlIhUJ6hMGTSXw
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+GET http://localhost:8085/admin/customers
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTcxNjkzNDc2MiwiaWF0IjoxNzE2OTM0MTYyLCJzY29wZSI6IlJPTEVfVVNFUiJ9.gyxIINeOajSeswWnpF-UnhhTWS5AhtSPhNu4d4DRCunpJ1LcRFW7oSYs_Z5hmjfF6Gg5wR--Vuidiok54ZwWRw
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+GET http://localhost:8085/admin/customers
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTcxNjkzNDQyNCwiaWF0IjoxNzE2OTMzODI0LCJzY29wZSI6IlJPTEVfVVNFUiJ9.eWm0F0qCemnC3ORc4lPRFgctCYr5XZDvJfoqN4SlBsxvgrDRf-mZgm_JfQ0LR72n01rHLnm53zf2FqWaKAxN3A
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+GET http://localhost:8085/admin/customers
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTcxNjkzNDAwNiwiaWF0IjoxNzE2OTMzNDA2LCJzY29wZSI6IlJPTEVfVVNFUiJ9.M_4JkFNq1f4RdAql-TcqoGWPR0aFopdl-csxaiaPnJEK5mv_TVObno9XvgrizjT0m_freptqdG9bAbeVS2Y_cA
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+GET http://localhost:8085/admin/customers
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcxNjkzMzgzNCwiaWF0IjoxNzE2OTMzMjM0LCJzY29wZSI6IlJPTEVfQURNSU4gUk9MRV9VU0VSIn0.lTBXDYKbEBOVjDNbIaMsQGT46hI49aV1giMp3vP36wImBKB7YPWlFW6X6wNWwFs4rzH9e2SUmkh0A5laYqZEsQ
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+GET http://localhost:8085/admin/customers
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+POST http://localhost:8085/auth/login
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 28
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+username=admin&password=1234
+
+<> 2024-05-28T223750.200.json
+
+###
+
+POST http://localhost:8085/auth/login
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 28
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+username=admin&password=1234
+
+<> 2024-05-28T002725.200.json
+
+###
+

@@ -21,7 +21,7 @@ export class CustomerService {
   }
 
   public saveCustomer(customer : Customer) : Observable<Customer>{
-    return this.http.post<Customer>(this.url+"/admin/customers", customer);
+    return this.http.post<Customer>(this.url+"/admin/customer", customer);
   }
 
   public deleteCustomer(id : number){
@@ -29,6 +29,6 @@ export class CustomerService {
   }
 
   public editCustomer(customer: Customer): Observable<Customer> {
-    return this.http.put<Customer>(this.url+"/admin/customers", customer);
+    return this.http.put<Customer>(this.url+"/admin/customer", customer);
   }
 }

@@ -10,27 +10,27 @@ import {Account} from "../model/account.model";
   providedIn: 'root'
 })
 export class AccountsService {
-  private host : string = "http://localhost:8085/operations";
+  private host : string = "http://localhost:8085";
 
   constructor(private http : HttpClient) { }
 
   public getAccount(accountId : string, page : number, size : number):Observable<AccountDetails>{
-    return this.http.get<AccountDetails>(this.host+"/"+accountId+"/pageOperations?page="+page+"&size="+size);
+    return this.http.get<AccountDetails>(this.host+"/user/operations/"+accountId+"/pageOperations?page="+page+"&size="+size);
   }
 
   public debit(operation : OperationModel){
-    return this.http.post(this.host+"/debit", operation);
+    return this.http.post(this.host+"/admin/operations/debit", operation);
   }
 
   credit(operation: OperationModel) {
-    return this.http.post(this.host+"/credit", operation);
+    return this.http.post(this.host+"/admin/operations/credit", operation);
   }
 
   transfer(transferRequest: TransferModel) {
-    return this.http.post(this.host+"/transfer", transferRequest)
+    return this.http.post(this.host+"/user/operations/transfer", transferRequest)
   }
 
   public getCustomerAccounts(customerId : number): Observable<Array<Account>>{
-    return this.http.get<Array<Account>>("http://localhost:8085/customerAccounts/"+customerId)
+    return this.http.get<Array<Account>>(this.host+"/admin/customerAccounts/"+customerId)
   }
 }

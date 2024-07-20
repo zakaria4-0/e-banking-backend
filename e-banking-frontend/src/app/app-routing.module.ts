@@ -6,13 +6,17 @@ import {NewCustomerComponent} from "./new-customer/new-customer.component";
 import {CustomerAccountsComponent} from "./customer-accounts/customer-accounts.component";
 import {LoginComponent} from "./login/login.component";
 import {AdminTemplateComponent} from "./admin-template/admin-template.component";
+import {authenticationGuard} from "./guards/authentication.guard";
+import {authorizationGuard} from "./guards/authorization.guard";
+import {UnauthorizedComponent} from "./unauthorized/unauthorized.component";
 
 const routes: Routes = [
-  {path :"admin", component : AdminTemplateComponent, children: [
-      {path :"customers", component : CustomersComponent},
+  {path :"admin", component : AdminTemplateComponent,canActivate : [authenticationGuard], children: [
+      {path :"customers", component : CustomersComponent, canActivate : [authorizationGuard]},
       {path :"accounts", component : AccountsComponent},
       {path :"newCustomer", component : NewCustomerComponent},
-      {path :"customerAccounts/:id", component : CustomerAccountsComponent}
+      {path :"customerAccounts/:id", component : CustomerAccountsComponent},
+      {path :"unauthorized", component : UnauthorizedComponent}
     ]},
   {path : "login", component : LoginComponent},
   {path : "", redirectTo : "/login", pathMatch:"full"}

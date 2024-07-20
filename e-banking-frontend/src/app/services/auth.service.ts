@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {jwtDecode} from "jwt-decode";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +10,10 @@ export class AuthService {
 
   isAuthenticated : Boolean=false;
   roles : any;
-  username! : string;
-  accessToken! : string
+  username! : any;
+  accessToken! : any
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private router: Router) { }
 
   public login(username: string, password : string){
     let options = {
@@ -28,5 +29,22 @@ export class AuthService {
     let jwtDecoded:any = jwtDecode(this.accessToken)
     this.username=jwtDecoded.sub;
     this.roles = jwtDecoded.scope;
+    window.localStorage.setItem('access-token', this.accessToken);
+  }
+
+  logout() {
+    this.isAuthenticated=false;
+    this.roles = undefined;
+    this.username=undefined;
+    this.accessToken=undefined;
+    window.localStorage.clear();
+    this.router.navigateByUrl('/login')
+  }
+
+  uploadTokenFromLocalStorage() {
+    let token = window.localStorage.getItem('access-token');
+    this.loadProfile({'access-token': token});
+    this.router.navigateByUrl('/admin')
+
   }
 }

@@ -79,7 +79,7 @@ public class EBankingBackendApplication {
 		};
 	}
 
-	@Bean
+	// @Bean
 	CommandLineRunner commandLineRunner(BankAccountServiceImpl bankAccountService){
 		return args -> {
 			Stream.of("Hassan", "Yassin", "Aicha").forEach(name -> {
