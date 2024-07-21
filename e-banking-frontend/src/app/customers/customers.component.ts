@@ -5,6 +5,8 @@ import {Customer} from "../model/customer.model";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
 import {Router} from "@angular/router";
+import {AccountsService} from "../services/accounts.service";
+import {Account} from "../model/account.model";
 
 @Component({
   selector: 'app-customers',
@@ -21,12 +23,18 @@ export class CustomersComponent implements OnInit{
   totalPages!: number;
   pageSize: number = 5;
   currentPage: number=0;
-  constructor(private customerService : CustomerService, private fb : FormBuilder, private router : Router) {
+  customerAccounts!: Account[]
+  constructor(private customerService : CustomerService, private fb : FormBuilder, private router : Router,
+              private accountService: AccountsService) {
   }
   ngOnInit(): void {
     this.searchFormGroup=this.fb.group({
       keyword : this.fb.control("")
     });
+
+    this.searchFormGroup.valueChanges.subscribe(value=>{
+      this.handleSearchCustomer();
+    })
 
     this.editCustomerFormGroup = this.fb.group({
       id : this.fb.control(""),
@@ -71,6 +79,7 @@ export class CustomersComponent implements OnInit{
     this.customerService.searchCustomers(kw).subscribe({
       next : data => {
         this.customers = data
+        this.handleChangePageSize(this.pageSize.toString())
       },
       error : err => {
         this.errorMsg = err.message;
@@ -103,7 +112,7 @@ export class CustomersComponent implements OnInit{
         this.customers[index] = customer;
         this.customer = customer;
         alert("Customer infos edited successfully")
-
+        this.getCustomersListPage(this.pageSize, this.currentPage)
       },
       error : err => {
 
@@ -136,5 +145,17 @@ export class CustomersComponent implements OnInit{
     console.log("**** pageSize= "+page)
     console.log("***** Modulo= "+this.customers.length % page)
     this.getCustomersListPage(page,this.currentPage);
+  }
+
+  handleGetCustomerAccounts(id: number) {
+    this.accountService.getCustomerAccounts(id).subscribe(
+      results=>{
+        this.customerAccounts=results;
+      }
+    )
+  }
+
+  handleGoToAccountHistory() {
+    this.router.navigateByUrl("/accounts")
   }
 }

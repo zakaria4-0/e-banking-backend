@@ -4,24 +4,25 @@
   <div class="card">
     <div class="card-header">Customers</div>
     <div class="card-body">
-      <div *ngIf="searchFormGroup">
-        <form [formGroup]="searchFormGroup" (ngSubmit)="handleSearchCustomer()">
+      <div *ngIf="searchFormGroup" class="row col-lg-4">
+        <form [formGroup]="searchFormGroup">
           <div class="input-group">
-            <label class="input-group-text">Keyword :</label>
-            <input type="text" formControlName="keyword" class="form-control">
-            <button class="btn btn-info">
-              <i class="bi bi-search"></i>
-            </button>
+            <label class="input-group-text"><i class="bi bi-search"></i></label>
+            <input type="text" formControlName="keyword"  class="form-control" placeholder="Rechercher Client">
           </div>
         </form>
       </div>
 
-      <select name="pages"  [(ngModel)]="pageSize" (change)="handleChangePageSize(pageSize.toString())">
-        <option value=5>5</option>
-        <option value=10>10</option>
-        <option value=15>15</option>
-        <option value=20>20</option>
-      </select>
+      <div class="input-group">
+        <select name="pages" class="form-select offset-10 mt-2"  [(ngModel)]="pageSize" (change)="handleChangePageSize(pageSize.toString())">
+          <option value="" disabled selected>Select your page size</option>
+          <option value=5>5</option>
+          <option value=10>10</option>
+          <option value=15>15</option>
+          <option value=20>20</option>
+        </select>
+      </div>
+
       <table class="table">
         <thead>
         <tr>
@@ -81,9 +82,40 @@
             </div>
           </td>
           <td>
-            <button (click)="handleCustomerAccounts(c)" class="btn btn-secondary">
+            <button (click)="handleGetCustomerAccounts(c.id)" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalCenter2">
               Accounts
             </button>
+            <div class="modal modal-xl fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle2">List of accounts</h5>
+                  </div>
+                  <div class="modal-body">
+                    <table class="table">
+                      <thead>
+                      <tr>
+                        <th>Id</th><th>CreatedDt</th><th>Type</th><th>Balance</th><th>Over Draft</th><th>Interest Rate</th>
+                      </tr>
+                      </thead>
+                      <tbody *ngIf="customerAccounts">
+                      <tr *ngFor="let a of customerAccounts">
+                        <td><a class="link-offset-2 link-underline link-underline-opacity-0" routerLink="/admin/accounts">{{a.id}}</a></td>
+                        <td>{{a.createdAt | date : 'dd-MM-yyyy'}}</td>
+                        <td>{{a.type}}</td>
+                        <td>{{a.balance | number : '1.2-2'}}</td>
+                        <td>{{a.overDraft ? a.overDraft : "NaN"}}</td>
+                        <td>{{a.interestRate ? a.interestRate : "NaN"}}</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </td>
         </tr>
         </tbody>
@@ -91,7 +123,7 @@
       <ul class="nav nav-pills">
         <li *ngFor="let item of [].constructor(totalPages); let page=index">
           <a [ngClass]="page==currentPage?'btn-info':'btn btn-outline-info'" (click)="goToPage(page)"
-             class="btn ms-1 mt-1">{{page}}</a>
+             class="btn ms-1 mt-1 btn-sm">{{page}}</a>
         </li>
       </ul>
     </div>
