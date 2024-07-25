@@ -24,6 +24,7 @@ export class CustomersComponent implements OnInit{
   pageSize: number = 5;
   currentPage: number=0;
   customerAccounts!: Account[]
+  currentPages: number[]=[];
   constructor(private customerService : CustomerService, private fb : FormBuilder, private router : Router,
               private accountService: AccountsService) {
   }
@@ -45,9 +46,8 @@ export class CustomersComponent implements OnInit{
    this.customerService.getCustomers().subscribe({
      next : data =>{
        this.customers = data
-
        this.handleChangePageSize(this.pageSize.toString());
-
+       this.goToNextPageList(0)
      },
      error : err => {
        this.errorMsg = err.message;
@@ -55,8 +55,38 @@ export class CustomersComponent implements OnInit{
    })
   }
 
+  goToNextPageList(index: number){
+    debugger;
+    this.currentPages=[]
+    for (let i =0; i<this.totalPages; i++){
+      this.currentPages.push(i)
+    }
+    this.currentPages=this.currentPages.slice(index, index+3)
+    console.log("currentPages "+this.currentPages)
+    console.log("include total "+this.currentPages.includes(this.totalPages-1))
+  }
+
+  goToPreviousPageList(index: number){
+    debugger
+    this.currentPages=[]
+    for (let i =0; i<this.totalPages; i++){
+      this.currentPages.push(i)
+    }
+    if (this.currentPages[index]){
+      this.currentPages=this.currentPages.slice(index-3, index)
+    }else {
+      this.currentPages=this.currentPages.slice(index-3, this.currentPages.length)
+    }
+
+
+
+  }
+
   getCustomersListPage(pageSize: number, currentPage: number){
     this.customersByPage=this.customers
+    if (currentPage>this.totalPages-1){
+      currentPage=this.totalPages-1
+    }
     debugger;
     let index : number =  pageSize + (pageSize * currentPage);
     console.log("***** index: "+index)

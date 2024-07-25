@@ -120,12 +120,25 @@
         </tr>
         </tbody>
       </table>
-      <ul class="nav nav-pills">
-        <li *ngFor="let item of [].constructor(totalPages); let page=index">
-          <a [ngClass]="page==currentPage?'btn-info':'btn btn-outline-info'" (click)="goToPage(page)"
-             class="btn ms-1 mt-1 btn-sm">{{page}}</a>
+      <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li [ngClass]="currentPages.includes(0)? 'page-item disabled' : 'page-item'">
+          <a class="page-link btn" (click)="goToPreviousPageList(currentPages[0])" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+
+          </a>
+        </li>
+        <li *ngFor="let page of currentPages" [ngClass]="page==currentPage?'page-item active':'page-item'">
+          <a class="page-link btn"  (click)="goToPage(page)">{{page}}</a>
+        </li>
+        <li [ngClass]="currentPages.includes(totalPages-1)? 'page-item disabled' : 'page-item'">
+          <a class="page-link btn" (click)="goToNextPageList(currentPages[currentPages.length-1]+1)" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+
+          </a>
         </li>
       </ul>
+      </nav>
     </div>
   </div>
   </ng-container>
